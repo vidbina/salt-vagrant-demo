@@ -3,4 +3,7 @@ common_packages:
     - pkgs:
       - htop
       - strace
-      - vim
+
+Install editor:
+  pkg.installed:
+    - name: {{ pillar['editor'] }}
