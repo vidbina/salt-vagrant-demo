@@ -9,10 +9,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   net_ip = "192.168.50"
 
   [
-    ["master1", "#{net_ip}.10",1024, os],
-    ["master2", "#{net_ip}.11",1024, os],
-  ].each do |name,ip,mem,os|
-    config.vm.define name, primary: true do |master_config|
+    ["master1", "#{net_ip}.10",1024, os, true],
+    ["master2", "#{net_ip}.11",1024, os, false],
+  ].each do |name,ip,mem,os,is_primary|
+    config.vm.define name, primary: is_primary do |master_config|
       master_config.vm.provider "virtualbox" do |vb|
         vb.cpus = 1
         vb.memory = "#{mem}"
